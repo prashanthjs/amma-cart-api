@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/11160955/how-to-exclude-some-fields-from-the-document
+http://stackoverflow.com/questions/13699784/mongoose-v-property-hide -  var Schema = new Schema({ __v: { type: Number, select: false}})

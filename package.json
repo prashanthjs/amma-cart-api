@@ -1,0 +1,58 @@
+{
+  "name": "amma-cart-api",
+  "version": "0.0.1",
+  "description": "Amma cart",
+  "main": "index.js",
+  "author": "Prashanth Pratapagiri <prashanth.p@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "hapi",
+    "node",
+    "amma",
+    "amma-cart-api"
+  ],
+  "typescript": {
+    "definition": "amma-cart-api.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prashanthjs/amma-cart-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prashanthjs/amma-cart-api/issues"
+  },
+  "scripts": {
+    "test": "lab -t 100 -v -C"
+  },
+  "dependencies": {
+    "hapi": "^10.4.1",
+    "async": "^1.4.1",
+    "boom": "^2.8.0",
+    "config": "^1.14.0",
+    "glue": "^2.1.0",
+    "good": "^6.3.0",
+    "good-console": "^5.0.2",
+    "halacious": "^3.1.5",
+    "hapi-auth-jwt2": "^5.0.7",
+    "joi": "^6.5.0",
+    "joigoose": "^1.5.5",
+    "jsonwebtoken": "^5.4.0",
+    "lodash": "^3.10.0",
+    "mongoose": "^4.0.7",
+    "amma-plugin-loader": "git://git@github.com:prashanthjs/amma-plugin-loader.git",
+    "amma-db": "git://git@github.com:prashanthjs/amma-db.git",
+    "amma-db-parser": "git://git@github.com:prashanthjs/amma-db-parser.git",
+    "amma-event-emitter": "git://git@github.com:prashanthjs/amma-event-emitter.git",
+    "amma-file-upload": "git://git@github.com:prashanthjs/amma-file-upload.git",
+    "amma-article": "file: ./lib/amma-article"
+  },
+  "devDependencies": {
+    "code": "^1.4.1",
+    "gulp": "^3.8.11",
+    "gulp-lab": "^1.0.5",
+    "gulp-nodemon": "^2.0.3",
+    "lab": "^5.8.0",
+    "sinon": "^1.15.4",
+    "tsd": "^0.6.3"
+  }
+}

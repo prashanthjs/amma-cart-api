@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "sourceMap": false,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "noLib": false
+    },
+    "filesGlob": [
+        "*.ts",
+        "*[!node_modules]/**/*.ts",
+        "lib/**/*.ts",
+        "typings/**/*.ts"
+    ],
+    "files": [
+        "index.ts",
+        "config/manifest.d.ts",
+        "config/manifest.ts",
+        "lib/amma-article/controllers/article.controller.ts",
+        "lib/amma-article/index.ts",
+        "lib/amma-article/routes.ts",
+        "lib/amma-article/services/article.model.ts",
+        "lib/amma-article/services/article.schema.ts",
+        "typings/async/async.d.ts",
+        "typings/bluebird/bluebird.d.ts",
+        "typings/boom/boom.d.ts",
+        "typings/config/config.d.ts",
+        "typings/gulp-nodemon/gulp-nodemon.d.ts",
+        "typings/gulp/gulp.d.ts",
+        "typings/hapi/hapi.d.ts",
+        "typings/joi/joi.d.ts",
+        "typings/jsonwebtoken/jsonwebtoken.d.ts",
+        "typings/lodash/lodash.d.ts",
+        "typings/missing.d.ts",
+        "typings/mongoose/mongoose.d.ts",
+        "typings/node/node.d.ts",
+        "typings/orchestrator/orchestrator.d.ts",
+        "typings/q/Q.d.ts",
+        "typings/sinon/sinon.d.ts",
+        "typings/tsd.d.ts"
+    ]
+}

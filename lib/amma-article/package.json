@@ -1,0 +1,14 @@
+{
+  "name": "amma-article",
+  "version": "0.0.1",
+  "description": "Hapi Article sample module",
+  "main": "index.js",
+  "author": "Prashanth Pratapagiri <prashanth.p@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "hapi",
+    "node",
+    "amma",
+    "amma-article"
+  ]
+}
