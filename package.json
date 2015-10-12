@@ -44,7 +44,8 @@
     "amma-db-parser": "git://git@github.com:prashanthjs/amma-db-parser.git",
     "amma-event-emitter": "git://git@github.com:prashanthjs/amma-event-emitter.git",
     "amma-file-upload": "git://git@github.com:prashanthjs/amma-file-upload.git",
-    "amma-article": "file: ./lib/amma-article"
+    "amma-article": "*",
+    "amma-crud-helper": "*"
   },
   "devDependencies": {
     "code": "^1.4.1",

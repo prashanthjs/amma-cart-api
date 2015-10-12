@@ -1,0 +1,14 @@
+{
+  "name": "amma-crud-helper",
+  "version": "0.0.1",
+  "description": "Hapi Crud",
+  "main": "index.js",
+  "author": "Prashanth Pratapagiri <prashanth.p@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "hapi",
+    "node",
+    "amma",
+    "amma-crud-helper"
+  ]
+}
