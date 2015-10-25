@@ -19,7 +19,7 @@ export interface ICrudModel<IDocument extends Mongoose.Document> {
   findByIdAndRemove(id: string, next: (err?: any, results?: any) => any): void;
 }
 
-export default class CrudModel<IDocument extends Mongoose.Document> implements ICrudModel<IDocument> {
+abstract class CrudModel<IDocument extends Mongoose.Document> implements ICrudModel<IDocument> {
 
   protected _model: Mongoose.Model<IDocument>;
 
@@ -31,14 +31,9 @@ export default class CrudModel<IDocument extends Mongoose.Document> implements I
     return this._server.plugins['amma-db-parser'].dbParser.getDbParser(this.getSchema());
   }
 
-  getSchema(): any{
-    throw new Error("getSchema() method not implemented");
-  }
+  abstract getSchema(): Mongoose.Schema;
 
-
-  getCollectionName(): any {
-    throw new Error("getCollectionName() method not implemented");
-  }
+  abstract getCollectionName(): string;
 
   get model(): Mongoose.Model<IDocument> {
     if (!this._model) {
@@ -81,3 +76,4 @@ export default class CrudModel<IDocument extends Mongoose.Document> implements I
   }
 
 }
+export default CrudModel;

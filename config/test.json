@@ -1,0 +1,9 @@
+{
+  "port": 3333,
+  "host": null,
+  "db": {
+    "uri": "mongodb://localhost/ammacart-api-dev",
+    "options": {}
+  },
+  "cors": true
+}

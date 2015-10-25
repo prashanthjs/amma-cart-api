@@ -1,7 +1,7 @@
 import Hapi = require("hapi");
 import Mongoose = require("mongoose");
 import DbParser = require('amma-db-parser/services/db.parser');
-import CrudModel = require('amma-crud-helper/lib/crud.model');
+import CrudModel = require('../../amma-crud-helper/lib/crud.model');
 
 export interface IArticleDocument extends Mongoose.Document {
   title: string;

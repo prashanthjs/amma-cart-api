@@ -16,7 +16,7 @@ let manifest = {
   },
   connections: [{
     port: Config.get('port'),
-    host: null
+    host: Config.get('host')
   }],
   plugins: {
     'good': {
@@ -30,15 +30,16 @@ let manifest = {
       }]
     },
     'halacious': null,
-    'amma-event-emitter': null,
-    'amma-db': {
-      options: {
-        db: Config.get('db')
-      }
-    },
-    'amma-db-parser': null,
-    'amma-file-upload': null,
-    './lib/amma-article': null
+   'amma-event-emitter': null,
+   'amma-db': {
+     options: {
+       db: Config.get('db')
+     }
+   },
+   'amma-db-parser': null,
+   'amma-file-upload': null,
+   './lib/amma-article': null,
+   './lib/amma-user': null
   }
 };
 export = manifest;

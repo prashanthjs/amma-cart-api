@@ -25,3 +25,13 @@ declare module "lab" {
   var _temp: any;
   export = _temp;
 }
+
+declare module "mongoose-validator" {
+  var _temp: any;
+  export = _temp;
+}
+
+declare module "stream-to-promise" {
+  var _temp: any;
+  export = _temp;
+}

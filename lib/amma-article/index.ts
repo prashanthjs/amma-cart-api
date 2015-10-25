@@ -3,7 +3,7 @@ import Plugin = require('amma-plugin-loader');
 let pkg = require('./package.json');
 let PluginLoader = Plugin.default;
 let config: Plugin.IConfig = {
-  options:{
+  options: {
     'articleSchema': require('./services/article.schema').default
   },
   services: {
@@ -15,5 +15,5 @@ let config: Plugin.IConfig = {
     pkg: pkg
   }
 };
-let plugin:Plugin.IPluginLoader = new PluginLoader(config);
+let plugin: Plugin.IPluginLoader = new PluginLoader(config);
 export = plugin;

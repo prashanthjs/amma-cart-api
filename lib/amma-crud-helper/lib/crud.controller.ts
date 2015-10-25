@@ -15,15 +15,13 @@ export interface ICallback {
   (err?: any, results?: any): any;
 }
 
-export default class CrudController<IDocument extends Mongoose.Document, ICrudModel extends CrudModel.ICrudModel<Mongoose.Document>> {
+abstract class CrudController<IDocument extends Mongoose.Document, ICrudModel extends CrudModel.ICrudModel<Mongoose.Document>> {
 
   constructor(protected _server: Hapi.Server) {
 
   }
 
-  getService(): ICrudModel {
-    throw new Error('getService() method is not implemented');
-  }
+  abstract getService(): ICrudModel;
 
   getAll(request: Hapi.Request, reply: Hapi.IReply): void {
     let service = this.getService();
@@ -54,18 +52,14 @@ export default class CrudController<IDocument extends Mongoose.Document, ICrudMo
   get(request: IRequestWithParamId<IDocument>, reply: Hapi.IReply): void {
     let _id = request.params.id;
     let service = this.getService();
-
-    service.findById(_id, (err?: any, results?: any): any => {
+    service.findById(_id, (err?: any, result?: any): any => {
       if (err) {
         reply(Boom.badImplementation(err));
       }
-      else if(!results){
-          reply(Boom.notFound('not found'));
-      }
-      else if(!results.results) {
+      else if (!result) {
         reply(Boom.notFound('not found'));
       } else {
-        reply(results.results);
+        reply(result);
       }
     });
   }
@@ -125,9 +119,10 @@ export default class CrudController<IDocument extends Mongoose.Document, ICrudMo
         return reply(Boom.badRequest(err));
       }
       else {
-        return reply({ 'success': true }).code(204);
+        return reply({ 'success': true });
       }
     });
   }
 
 }
+export default CrudController;

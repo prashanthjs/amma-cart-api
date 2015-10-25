@@ -13,7 +13,7 @@ var manifest = {
     },
     connections: [{
             port: Config.get('port'),
-            host: null
+            host: Config.get('host')
         }],
     plugins: {
         'good': {
@@ -35,7 +35,8 @@ var manifest = {
         },
         'amma-db-parser': null,
         'amma-file-upload': null,
-        './lib/amma-article': null
+        './lib/amma-article': null,
+        './lib/amma-user': null
     }
 };
 module.exports = manifest;

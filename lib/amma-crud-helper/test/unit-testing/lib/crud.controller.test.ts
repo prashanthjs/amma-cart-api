@@ -49,7 +49,6 @@ suite('Test Article Controller', () => {
     server = new Hapi.Server();
     sampleController = new SampleController(server);
     sampleService = sampleController.getService();
-    console.log(sampleService);
     next();
   });
 
