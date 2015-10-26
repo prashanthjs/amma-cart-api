@@ -2,18 +2,27 @@ module.exports = {
   'userSchema': require('./user.schema').default,
   'roleSchema': require('./role.schema').default,
   'authsecret': 'ammadaddysisterbrotherfamily123450987',
+  'privileges':[
+    {
+      name: 'user-add',
+      title: 'add user'
+    }
+  ],
   'defaultRoles': [
     {
-      id: 'guest',
-      title: 'Guest'
+      _id: 'guest',
+      title: 'Guest',
+      privileges: []
     },
     {
-      id: 'super_power_admin',
-      title: 'Super Power admin'
+      _id: 'super_power_admin',
+      title: 'Super Power admin',
+      privileges: []
     },
     {
-      id: 'user',
-      title: 'User'
+      _id: 'user',
+      title: 'User',
+      privileges: []
     }
   ],
   fileOptions: {

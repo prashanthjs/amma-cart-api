@@ -3,6 +3,7 @@ import _ = require("lodash");
 import ObjectPath = require('object-path');
 import JWT = require('jsonwebtoken');
 import UserModel = require('./user.model');
+import RoleModel = require('./role.model');
 import UUID = require('node-uuid');
 let HapiAuthJwt = require('hapi-auth-jwt2');
 
@@ -17,12 +18,14 @@ export interface IUserToken {
 }
 
 export default class AuthHandler {
+  private _guestToken: string;
 
   constructor(private _server: Hapi.Server) {
   }
 
   registerAuth(next) {
     this._server.register(HapiAuthJwt, (err) => {
+      this._guestToken = this.createGuestToken();
       if (err) {
         return next(err);
       }
@@ -34,6 +37,11 @@ export default class AuthHandler {
       this._server.auth.default('jwt');
       return next();
     });
+  }
+
+  createGuestToken(): string {
+    let token = 'guest';
+    return JWT.sign({ token: token }, this._getSecret());
   }
 
   createAndAddToken(id: string, next: ICallback) {
@@ -50,23 +58,53 @@ export default class AuthHandler {
 
   validate(decoded: IUserToken, request: Hapi.Request, callback: ICallback) {
     let token = ObjectPath.get(decoded, 'token', '');
-    if (!token) {
-      return callback(null, false);
-    }
     let userModel = this._getUserModel();
-    userModel.findByToken(token, (err: any, result) => {
-      if (err) {
-        return callback(null, false);
-      }
-      if (!result.isActive) {
-        return callback(null, false);
-      }
-      return callback(null, result);
-    });
+    let roleModel = this._getRoleModel();
+    if (!token) {
+      callback(null, false);
+    }
+    else if (token === 'guest') {
+      roleModel.findById('guest', (err, result: any) => {
+        if (err) {
+          return callback(null, true);
+        }
+        return callback(null, { scope: result.privileges });
+      });
+    }
+    else {
+      userModel.findByToken(token, (err: any, result) => {
+        if (err) {
+          callback(null, false);
+        }
+        else if (!result || !result.isActive) {
+          callback(null, false);
+        }
+        else {
+          roleModel.findById(result.role, (err, result: any) => {
+            if (!err) {
+              result.scope = result.privileges;
+            }
+            return callback(null, result);
+          });
+        }
+      });
+    }
+  }
+
+  onRequest(request: Hapi.Request, reply: Hapi.IReply) {
+    let authToken = ObjectPath.get(request.headers, 'authorization', null);
+    if (!authToken) {
+      ObjectPath.set(request.headers, 'authorization', this._guestToken);
+    }
+    reply.continue();
   }
 
   private _getUserModel(): UserModel.IUserModel {
     return this._server.plugins['amma-user'].userModel;
+  }
+
+  private _getRoleModel(): RoleModel.IRoleModel {
+    return this._server.plugins['amma-user'].roleModel;
   }
 
   private _getSecret(): string {

@@ -68,7 +68,7 @@ abstract class CrudModel<IDocument extends Mongoose.Document> implements ICrudMo
   }
 
   findByIdAndUpdate(id: string, payload: IDocument, next: ICallback): void {
-    this.model.findByIdAndUpdate(id, payload, { upsert: false }, next);
+    this.model.findByIdAndUpdate(id, payload, { upsert: true }, next);
   }
 
   findByIdAndRemove(id: string, next: ICallback): void {

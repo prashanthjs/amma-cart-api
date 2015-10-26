@@ -25,13 +25,15 @@ suite('Test Article Service', () => {
     {
       name: 'test2',
       title: 'test2 privilege',
-      description: 'test2 description'
+      description: 'test2 description',
+      defaultRoleAccess: 'guest'
     },
   ];
   let privileges2: PrivilegeHandler.IPrivilege[] = [
     {
       name: 'test3',
-      title: 'test3 privilege'
+      title: 'test3 privilege',
+      defaultRoleAccess: ['guest','user']
     },
     {
       name: 'test4',
@@ -73,6 +75,22 @@ suite('Test Article Service', () => {
       scopes.push(priv[i].name)
     }
     expect(privilegeHandler.scopes).to.deep.equal(scopes);
+    next();
+  });
+
+  test('get getScopesForDefaultRole', (next) => {
+
+    let scopes = ['test2','test3'];
+    let returnScopes = privilegeHandler.getScopesForDefaultRole('guest');
+    expect(returnScopes).to.deep.equal(scopes);
+    next();
+  });
+
+  test('get getScopesForDefaultRole to be empty', (next) => {
+
+    let scopes = [];
+    let returnScopes = privilegeHandler.getScopesForDefaultRole('test1');
+    expect(returnScopes).to.deep.equal(scopes);
     next();
   });
 

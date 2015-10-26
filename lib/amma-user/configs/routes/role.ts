@@ -7,6 +7,9 @@ let routes = [
     path: '/roles',
     config: {
       handler: '%plugins.amma-user.roleController.getAll%',
+      auth: {
+      //    scope: ['a']
+      },
       plugins: {
         hal: {
           embedded: {

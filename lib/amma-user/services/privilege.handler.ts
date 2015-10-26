@@ -38,4 +38,25 @@ export default class PrivilegeHandler {
     return scopes;
   }
 
+  getScopesForDefaultRole(name:string): string[] {
+    let scopes: string[] = [];
+    let privileges = this.privileges;
+    for(let i=0; i< privileges.length; i++){
+      let privilege = privileges[i];
+      if(!privilege.defaultRoleAccess){
+        continue;
+      }
+      else if(typeof privilege.defaultRoleAccess === 'string'){
+        if(name === privilege.defaultRoleAccess){
+          scopes.push(privilege.name)
+        }
+      } else{
+        if(privilege.defaultRoleAccess.indexOf(name) != -1){
+          scopes.push(privilege.name)
+        }
+      }
+    }
+    return scopes;
+  }
+
 }
