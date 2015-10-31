@@ -76,7 +76,7 @@ export default class AuthHandler {
         if (err) {
           callback(null, false);
         }
-        else if (!result || !result.isActive) {
+        else if (!result.isActive) {
           callback(null, false);
         }
         else {

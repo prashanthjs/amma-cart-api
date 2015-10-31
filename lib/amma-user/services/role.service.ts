@@ -16,20 +16,20 @@ export default class RoleService {
     this._insertDefaultRoles(next);
   }
 
-  private _insertDefaultRoles(next: ICallback): void {
+   private _insertDefaultRoles(next: ICallback): void {
     let roles = this._getDefaultRoles();
     let roleModel = this._getRoleModel();
     let privilegeHandler = this._getPrivilegeHandler();
     Async.eachSeries(roles, (role: any, _callback: ICallback) => {
       roleModel.findById(role._id, (err, result: any) => {
         if (err ) {
-          return _callback();
+          return _callback(err);
         }
         let scopes = [];
         if (role._id === 'super_power_admin') {
           scopes = privilegeHandler.scopes;
         } else {
-          scopes = privilegeHandler.getScopesForDefaultRole(role.id);
+          scopes = privilegeHandler.getScopesForDefaultRole(role._id);
         }
         if (result) {
           if (result._id == 'super_power_admin') {

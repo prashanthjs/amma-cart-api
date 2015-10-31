@@ -56,6 +56,7 @@
         "lib/amma-user/test/spec/user.spec.ts",
         "lib/amma-user/test/unit-testing/services/auth.handler.test.ts",
         "lib/amma-user/test/unit-testing/services/privilege.handler.test.ts",
+        "lib/amma-user/test/unit-testing/services/role.service.test.ts",
         "lib/amma-util/index.ts",
         "typings/async/async.d.ts",
         "typings/bluebird/bluebird.d.ts",

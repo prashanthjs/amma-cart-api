@@ -5,6 +5,7 @@ import Sinon = require('sinon');
 import Mongoose = require("mongoose");
 import AuthHandler = require('../../../services/auth.handler');
 import UserModel = require('../../../services/user.model');
+import RoleModel = require('../../../services/role.model');
 import _ = require('lodash');
 
 let lab = exports.lab = Lab.script(),
@@ -18,12 +19,11 @@ let lab = exports.lab = Lab.script(),
 
 
 suite('Test Article Service', () => {
-  let server;
-  let authHandler;
-  let userModel;
+  let server, authHandler, userModel, roleModel;
   before((next) => {
     server = new Hapi.Server();
     userModel = new UserModel.default(server);
+    roleModel = new RoleModel.default(server);
     server.plugins = {
       'amma-user': {
         config: {
@@ -31,7 +31,8 @@ suite('Test Article Service', () => {
             authsecret: 'test23'
           }
         },
-        'userModel': userModel
+        'userModel': userModel,
+        'roleModel': roleModel
       }
     }
     authHandler = new AuthHandler.default(server);
@@ -132,15 +133,107 @@ suite('Test Article Service', () => {
     let stub = Sinon.stub(userModel, 'findByToken', (token, callback) => {
       return callback(null, { isActive: true });
     });
+    let roleStub = Sinon.stub(roleModel, 'findById', (role, callback) => {
+      return callback(null, {
+        privileges: []
+      });
+    });
     let callback = Sinon.spy((err, result) => {
       expect(err).to.not.exist();
       expect(result).to.not.empty();
+      stub.restore();
+      roleStub.restore();
+      return next();
+    });
+    authHandler.validate({ token: 'token123' }, Sinon.spy(), callback);
+  });
+
+  test('test validate with valid user, role doesnot exist', (next) => {
+    let stub = Sinon.stub(userModel, 'findByToken', (token, callback) => {
+      return callback(null, { isActive: true });
+    });
+    let roleStub = Sinon.stub(roleModel, 'findById', (role, callback) => {
+      return callback('error', null);
+    });
+    let callback = Sinon.spy((err, result) => {
+      expect(err).to.not.exist();
+      expect(result).to.not.empty();
+      stub.restore();
+      roleStub.restore();
+      return next();
+    });
+    authHandler.validate({ token: 'token123' }, Sinon.spy(), callback);
+  });
+
+
+  test('test validate with empty user', (next) => {
+    let stub = Sinon.stub(userModel, 'findByToken', (token, callback) => {
+      return callback(null, {});
+    });
+    let callback = Sinon.spy((err, result) => {
+      expect(err).to.not.exist();
+      expect(result).to.be.false();
       stub.restore();
       return next();
     });
     authHandler.validate({ token: 'token123' }, Sinon.spy(), callback);
   });
 
+  test('test validate with valid guest user', (next) => {
+    let roleStub = Sinon.stub(roleModel, 'findById', (role, callback) => {
+      return callback(null, {
+        privileges: []
+      });
+    });
+    let callback = Sinon.spy((err, result) => {
+      expect(err).to.not.exist();
+      expect(result).to.not.empty();
+      roleStub.restore();
+      return next();
+    });
+    authHandler.validate({ token: 'guest' }, Sinon.spy(), callback);
+  });
+
+  test('test validate with valid guest role not found', (next) => {
+    let roleStub = Sinon.stub(roleModel, 'findById', (role, callback) => {
+      return callback('error', null);
+    });
+    let callback = Sinon.spy((err, result) => {
+      expect(err).not.to.be.exist();
+      roleStub.restore();
+      return next();
+    });
+    authHandler.validate({ token: 'guest' }, Sinon.spy(), callback);
+  });
+
+
+  test('on request - authorization ', (next) => {
+    let request = {
+      headers: {
+        authorization: null
+      }
+    };
+    let response = {
+      continue: Sinon.spy()
+    };
+    authHandler.onRequest(request, response);
+    expect(request.headers.authorization).not.to.be.empty();
+    next();
+  });
+
+  test('on request - authorization - provided', (next) => {
+    let request = {
+      headers: {
+        authorization: 'test123'
+      }
+    };
+    let response = {
+      continue: Sinon.spy()
+    };
+    authHandler.onRequest(request, response);
+    expect(request.headers.authorization).to.be.equal('test123');
+    next();
+  });
 
 
 });
