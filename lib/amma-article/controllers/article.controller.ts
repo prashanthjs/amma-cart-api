@@ -6,8 +6,8 @@ import ArticleModel = require('../services/article.model');
 
 export default class ArticleController extends CrudController.default<ArticleModel.IArticleDocument, ArticleModel.IArticleModel> {
 
-  getService(): ArticleModel.IArticleModel {
-    return this._server.plugins['amma-article'].articleModel;
-  }
+    getService():ArticleModel.IArticleModel {
+        return this._server.plugins['amma-article'].articleModel;
+    }
 
 }

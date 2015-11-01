@@ -1,3 +1,3 @@
 module.exports = [
-     '%plugins.amma-user.authHandler.registerAuth%',
+    '%plugins.amma-user.authHandler.registerAuth%',
 ];
