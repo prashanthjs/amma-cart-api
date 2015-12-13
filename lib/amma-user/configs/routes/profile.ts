@@ -1,10 +1,18 @@
 import Joi = require('joi');
+import Path = require('path');
 module.exports = [
     {
         method: 'GET',
-        path: '/users/get-image-with-token/{id?}',
+        path: '/users/create-token/{id?}',
         config: {
-            handler: '%plugins.amma-user.userProfileController.getImagesWithToken%',
+            handler: '%plugins.amma-user.userProfileController.createToken%',
+        }
+    },
+    {
+        method: 'GET',
+        path: '/users/get-images-using-token/{token}',
+        config: {
+            handler: '%plugins.amma-user.userProfileController.getImagesUsingToken%',
         }
     },
     {
@@ -33,17 +41,29 @@ module.exports = [
         }
     },
     {
-        method: 'GET',
-        path: '/users/{id}/images',
-        config: {
-            handler: '%plugins.amma-user.userProfileController.getImages%',
-        }
-    },
-    {
         method: 'DELETE',
         path: '/users/remove-file/{token}/{fileName}',
         config: {
             handler: '%plugins.amma-user.userProfileController.removeFile%'
+        }
+    },
+
+    {
+        method: 'GET',
+        path: '/users/get-image-using-token/{param*}',
+        config: {
+            handler: {
+                directory: {
+                    path: '/var/www/hapi/amma-cart-api/lib/amma-user/uploads/temp'
+                }
+            }
+        }
+    },
+    {
+        method: 'GET',
+        path: '/users/{id}/images',
+        config: {
+            handler: '%plugins.amma-user.userProfileController.getImages%',
         }
     }
 ];

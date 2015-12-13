@@ -16,6 +16,7 @@ var manifest = {
             host: Config.get('host')
         }],
     plugins: {
+        'inert': null,
         'good': {
             reporters: [{
                     reporter: GoodConsole,

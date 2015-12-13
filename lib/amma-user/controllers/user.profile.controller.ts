@@ -33,11 +33,19 @@ export default class UserProfileController {
         return this._server.plugins['amma-user'].config.options.fileOptions;
     }
 
-
-    getImagesWithToken(request:IRequest, reply:Hapi.IReply):any {
+    createToken(request:IRequest, reply:Hapi.IReply):any {
         let service = this.getService();
         let id = request.params.id;
-        service.getFilesWithToken(id, reply);
+        service.createToken(id, reply);
+    }
+
+    getImagesUsingToken(request:IRequest, reply:Hapi.IReply):any {
+        let service = this.getService();
+        let token = request.params.token;
+        let files = service.getFilesByToken(token);
+        reply({
+            files: files
+        });
     }
 
     getImages(request:IRequest, reply:Hapi.IReply):any {
@@ -61,13 +69,12 @@ export default class UserProfileController {
             let ret = {
                 filename: result.filename,
                 headers: data.file.hapi.headers
-            }
+            };
             return reply(ret);
         });
     }
 
     save(request:IRequest, reply:Hapi.IReply):any {
-        let service = this.getService();
         let token = request.params.token;
         let id = request.params.id;
         this.saveFiles(id, token, () => {

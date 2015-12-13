@@ -40,6 +40,7 @@
     "halacious": "^3.1.5",
     "hapi": "^10.4.1",
     "hapi-auth-jwt2": "^5.0.7",
+    "inert": "^3.2.0",
     "joi": "^6.5.0",
     "joigoose": "^1.5.5",
     "jsonwebtoken": "^5.4.0",
