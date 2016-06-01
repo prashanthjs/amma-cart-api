@@ -50,7 +50,7 @@ export default class UserProfileController {
 
     getImages(request:IRequest, reply:Hapi.IReply):any {
         let service = this.getService();
-        let id = request.params.id;
+        let id:string = request.params.id;
         service.getFiles(id, function (err, result) {
             reply({
                 files: result

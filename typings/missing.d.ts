@@ -35,3 +35,23 @@ declare module "stream-to-promise" {
   var _temp: any;
   export = _temp;
 }
+
+declare module "mkdirp"{
+  var _temp: any;
+  export = _temp;
+}
+
+declare module "fs-extra"{
+  var _temp: any;
+  export = _temp;
+}
+
+declare module "gm"{
+  var _temp: any;
+  export = _temp;
+}
+
+declare module "mime"{
+  var _temp: any;
+  export = _temp;
+}

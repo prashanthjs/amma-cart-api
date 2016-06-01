@@ -1,0 +1,93 @@
+{
+  "_args": [
+    [
+      "amma-file-upload@git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+      "/Users/prashanthpratapagiri/Projects/my/amma-cart-api"
+    ]
+  ],
+  "_from": "git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+  "_id": "amma-file-upload@0.0.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/amma-file-upload",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/prashanthjs/amma-file-upload/master/package.json",
+      "gitUrl": "git://github.com/prashanthjs/amma-file-upload.git",
+      "httpsUrl": "git+https://github.com/prashanthjs/amma-file-upload.git",
+      "shortcut": "github:prashanthjs/amma-file-upload",
+      "ssh": "git@github.com:prashanthjs/amma-file-upload.git",
+      "sshUrl": "git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+      "type": "github"
+    },
+    "name": "amma-file-upload",
+    "raw": "amma-file-upload@git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+    "rawSpec": "git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+    "scope": null,
+    "spec": "git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+    "type": "hosted"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+ssh://git@github.com/prashanthjs/amma-file-upload.git#dc5571e78acacf5b63b080b333d723c24e0bd080",
+  "_shasum": "ca4c9627e6596be063ab183635d87beef03f2ba7",
+  "_shrinkwrap": null,
+  "_spec": "amma-file-upload@git+ssh://git@github.com/prashanthjs/amma-file-upload.git",
+  "_where": "/Users/prashanthpratapagiri/Projects/my/amma-cart-api",
+  "author": {
+    "email": "prashanth.p@outlook.com",
+    "name": "Prashanth Pratapagiri"
+  },
+  "bugs": {
+    "url": "https://github.com/prashanthjs/amma-file-upload/issues"
+  },
+  "dependencies": {
+    "amma-plugin-loader": "git+ssh://git@github.com/prashanthjs/amma-plugin-loader.git",
+    "async": "^1.4.2",
+    "boom": "^2.9.0",
+    "fs": "0.0.2",
+    "fs-extra": "^0.24.0",
+    "gm": "^1.21.1",
+    "hapi": "^10.4.1",
+    "mime": "^1.3.4",
+    "mkdirp": "^0.5.1",
+    "node-uuid": "^1.4.3"
+  },
+  "description": "amma file upload",
+  "devDependencies": {
+    "code": "^1.4.1",
+    "gulp": "^3.8.11",
+    "gulp-lab": "^1.0.5",
+    "gulp-nodemon": "^2.0.3",
+    "lab": "^5.8.0",
+    "sinon": "^1.15.4",
+    "tsd": "^0.6.3"
+  },
+  "gitHead": "dc5571e78acacf5b63b080b333d723c24e0bd080",
+  "homepage": "https://github.com/prashanthjs/amma-file-upload#readme",
+  "keywords": [
+    "amma",
+    "amma-file-upload",
+    "hapi",
+    "node"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "amma-file-upload",
+  "optionalDependencies": {},
+  "readme": "# Amma File upload\n\nFileupload plugin for Hapi.\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashanthjs/amma-file-upload.git"
+  },
+  "scripts": {
+    "test": "lab -t 100 -v -C"
+  },
+  "typescript": {
+    "definition": "amma-file-upload.d.ts"
+  },
+  "version": "0.0.1"
+}

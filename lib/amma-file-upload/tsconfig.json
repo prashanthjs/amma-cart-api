@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "sourceMap": false,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "noLib": false
+    },
+    "filesGlob": [
+        "*.ts",
+        "services/**/*.ts",
+        "[!node_modules]/**/*.ts",
+        "test/**/*.ts",
+        "typings/**/*.ts"
+    ],
+    "files": [
+        "amma-file-upload.d.ts",
+        "index.ts",
+        "services/file-upload-helper.ts",
+        "services/file-upload.ts",
+        "test/unit-testing/services/file-upload-helper.test.ts",
+        "test/unit-testing/services/file-upload.test.ts",
+        "typings/async/async.d.ts",
+        "typings/bluebird/bluebird.d.ts",
+        "typings/boom/boom.d.ts",
+        "typings/fs-extra/fs-extra.d.ts",
+        "typings/gm/gm.d.ts",
+        "typings/gulp-nodemon/gulp-nodemon.d.ts",
+        "typings/gulp/gulp.d.ts",
+        "typings/hapi/hapi.d.ts",
+        "typings/mime/mime.d.ts",
+        "typings/missing.d.ts",
+        "typings/mkdirp/mkdirp.d.ts",
+        "typings/node-uuid/node-uuid-base.d.ts",
+        "typings/node-uuid/node-uuid-cjs.d.ts",
+        "typings/node-uuid/node-uuid.d.ts",
+        "typings/node/node.d.ts",
+        "typings/orchestrator/orchestrator.d.ts",
+        "typings/q/Q.d.ts",
+        "typings/sinon/sinon.d.ts",
+        "typings/tsd.d.ts"
+    ],
+    "exclude": []
+}

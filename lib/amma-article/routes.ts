@@ -22,7 +22,6 @@ let routes = [
         method: 'POST',
         path: '/articles',
         config: {
-
             handler: '%plugins.amma-article.articleController.create%',
             validate: {
                 payload: {

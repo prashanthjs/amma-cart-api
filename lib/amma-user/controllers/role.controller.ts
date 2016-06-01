@@ -1,4 +1,4 @@
-import Hapi = require('hapi');
+ import Hapi = require('hapi');
 import Boom = require('boom');
 import Async = require('async');
 import CrudController = require('../../amma-crud-helper/lib/crud.controller');
